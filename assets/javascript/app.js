@@ -12,8 +12,35 @@ let questions = [{
         question: "What was the original name of Destiny's Child?",
         answers: ["Girls Tyme", "Blaque", "Patron Saints", "702"],
         correct: "Girls Tyme",
+    }, {
+        question: "How many times was Elizabeth Taylor married?",
+        answers: [],
+        correct: "8",
+    }, {
+        question: "Who is Alecia Moore better known as?",
+        answers: ["Lady Gaga", "P!NK", "Iggy Azalea", "Alicia Keys"],
+        correct: "P!NK",
+    }, {
+        question: "",
+        answers: [],
+        correct: "",
+    }, {
+        question: "",
+        answers: [],
+        correct: "",
+    }, {
+        question: "",
+        answers: [],
+        correct: "",
+    }, {
+        question: "",
+        answers: [],
+        correct: "",
+    }, {
+        question: "",
+        answers: [],
+        correct: "",
     }
-
 
 
 ];
