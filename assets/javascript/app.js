@@ -2,44 +2,44 @@
 
 let questions = [{
         question: "Who is the oldest of the Kardashian sisters?",
-        answers: ["Kourtney", "Kim", "Khloe", "Kendell"],
-        correct: "Kourtney",
+        choices: ["Kourtney", "Kim", "Khloe", "Kendell"],
+        answer: "Kourtney",
     }, {
-        question: "Who wrote the McDonald’s jingle, “I’m Lovin’ It?”",
-        answers: ["Justin Timberlake", "Pusha T", "Paul McCartney", "Max Martin"],
+        question: "Who wrote the McDonald’s jingle, 'I’m Lovin’ It?'",
+        choices: ["Justin Timberlake", "Pusha T", "Paul McCartney", "Max Martin"],
         correct: "Pusha T",
     }, {
         question: "What was the original name of Destiny's Child?",
-        answers: ["Girls Tyme", "Blaque", "Patron Saints", "702"],
-        correct: "Girls Tyme",
+        choices: ["Girls Tyme", "Blaque", "Patron Saints", "702"],
+        answer: "Girls Tyme",
     }, {
         question: "How many times was Elizabeth Taylor married?",
-        answers: [],
-        correct: "8",
+        choices: ["7", "12", "10", "8"],
+        answer: "8",
     }, {
         question: "Who is Alecia Moore better known as?",
-        answers: ["Lady Gaga", "P!NK", "Iggy Azalea", "Alicia Keys"],
-        correct: "P!NK",
+        choices: ["Lady Gaga", "P!NK", "Iggy Azalea", "Alicia Keys"],
+        answer: "P!NK",
     }, {
-        question: "",
-        answers: [],
-        correct: "",
+        question: "What popular band was Dave Grohl in before The Foo Fighters'? ",
+        choices: ["Pearl Jam", "Nirvana", "Stone Temple Pilots", "Hole"],
+        answer: "Nirvana",
     }, {
-        question: "",
-        answers: [],
-        correct: "",
+        question: "What are the fans of Justin Bieber usually referred to as?",
+        choices: ["Beliebers", "Believers", "Bieb Hive", "Biebs Army"],
+        answer: "Beliebers",
     }, {
-        question: "",
-        answers: [],
-        correct: "",
+        question: "Who was the most Googled person in 2018?",
+        choices: ["Cardi B", "Khloe Kardashian", "Meghan Markle", "Stormy Daniels"],
+        answer: "Meghan Markle",
     }, {
-        question: "",
-        answers: [],
-        correct: "",
+        question: "On the TV Show 'Seinfeld' the character 'Kramer' went by another name on the Pilot Episode...What was that name?",
+        choices: ["Kramer", "Hoffman", "Kosmo", "Kessler"],
+        answer: "Kessler",
     }, {
-        question: "",
-        answers: [],
-        correct: "",
+        question: "What TV Show had a main character utter the final words 'I went ahead and ordered some for the table'?",
+        choices: ["Cheers", "Friends", "The Sopranos", "Mad Men"],
+        answer: "The Sopranos",
     }
 
 
