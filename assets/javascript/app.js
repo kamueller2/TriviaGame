@@ -1,5 +1,16 @@
+// $(document).ready(function() {
+
+$('#start').on('click', () => {
+    $('#start').remove();
+    game.loadQuestion();
+})
+
+
+
+
 //VARIABLES
 
+// TRIVIA QUESTIONS
 let questions = [{
         question: "Who is the oldest of the Kardashian sisters?",
         choices: ["Kourtney", "Kim", "Khloe", "Kendell"],
@@ -42,27 +53,31 @@ let questions = [{
         answer: "The Sopranos",
     }
 
-
 ];
 
 let game = {
     questions: questions,
     currentQuestion: 0,
-    counter: 30,
+    counter: 15,
     correct: 0,
     wrong: 0,
-    timer: function() {
+    countdown: function() {
         game.counter--;
         $('#counter').html(game.counter);
         if (game.counter <= 0) {
-            console.log("Time's Up!")
+            console.log("Time's Up!");
             game.timeUp();
         }
-
     },
     loadQuestion: function() {
-        this.timer.setInterval(game.timer, 1000);
-        ('.container').html(`<h2 ${questions.game.currentQuestion.question}</h2>`)
+        timer = setInterval(game.countdown, 1000);
+        $('#game-section').html('<h2>' + questions[game.currentQuestion].question + '</h2>');
+
+        // LOOP THROUGH QUESTIONS W/ ANSWER CHOICES
+
+        for (let i = 0; i < questions[game.currentQuestion].choices.length; i++);
+        $('#game-section').append(`<button class="answer-button" id="button-${i} data-name=${questions.game.currentQuestion.choices[i]}>${questions.game.currentQuestion.choices[i]}</button>`);
+
     },
     nextQuestion: function() {
 
@@ -88,8 +103,6 @@ let game = {
 }
 
 
-//FUNCTIONS
 
-$('#start').on('click', () => {
-    $('#start').remove();
-})
+
+// })
