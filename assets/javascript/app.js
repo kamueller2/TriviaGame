@@ -25,10 +25,17 @@ let game = {
     correct: 0,
     wrong: 0,
     timer: function() {
+        game.counter--;
+        $('#counter').html(game.counter);
+        if (game.counter <= 0) {
+            console.log("Time's Up!")
+            game.timeUp();
+        }
 
     },
     loadQuestion: function() {
-
+        this.timer.setInterval(game.timer, 1000);
+        ('.container').html(`<h2 ${questions.game.currentQuestion.question}</h2>`)
     },
     nextQuestion: function() {
 
@@ -40,6 +47,15 @@ let game = {
 
     },
     clicked: function() {
+
+    },
+    answeredCorrect: function() {
+
+    },
+    answeredWrong: function() {
+
+    },
+    reset: function() {
 
     }
 }
