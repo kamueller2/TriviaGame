@@ -66,6 +66,8 @@
          counter: 15,
          correct: 0,
          wrong: 0,
+         noAnswer: 0,
+
          countdown: function() {
              game.counter--;
 
@@ -83,7 +85,7 @@
              $('#game-section').html('<h2>' + questions[game.currentQuestion].question + '</h2>');
 
              for (let i = 0; i < questions[game.currentQuestion].choices.length; i++) {
-                 $('#game-section').append('<button class="answer-button" id="button-' + i + '" data-name"' + questions[game.currentQuestion].choices[i] + '">' + questions[game.currentQuestion].choices[i] + '</button>');
+                 $('#game-section').append('<button class="answer-button" id="button-' + i + ' "data-name" ' + questions[game.currentQuestion].choices[i] + '">' + questions[game.currentQuestion].choices[i] + '</button>');
 
              }
 
@@ -97,10 +99,23 @@
 
          },
          timeUp: function() {
+             clearInterval(timer);
+             game.noAnswer++;
+             $('#game-section').html('<h2>Time/s Up!</h2>');
+             $('#game-section').append('<h3>Correct Answer: ' + questions[game.currentQuestion].answer + '</h3>');
+             if (game.currentQuestion == questions.length - 1) {
+                 setTimeout(game.results, 3000);
+             } else {
+                 setTimeout(game.nextQuestion, 3000);
+             }
 
          },
          results: function() {
-
+             clearInterval(timer);
+             $('#game-section').html('<h2>All Done!</h2>');
+             $('#game-section').append(`<h3>Correct:  ${game.correct}<h/3>`);
+             $('#game-section').append(`<h3>Wrong: ${game.wrong}</h3>`);
+             $('#game-section').append(`<h3>Not Answered: ${game.noAnswer}</h3>`);
          },
          clicked: function(e) {
              clearInterval(timer);
@@ -114,6 +129,8 @@
          },
          answeredCorrect: function() {
              console.log("you got it!");
+             clearInterval(timer);
+             game.correct++
          },
          answeredWrong: function() {
              console.log("wrong");
