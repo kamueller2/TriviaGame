@@ -118,6 +118,7 @@ let game = {
         $('#game-section').append(`<h3>Correct:  ${game.correct}<h/3>`);
         $('#game-section').append(`<h3>Wrong: ${game.wrong}</h3>`);
         $('#game-section').append(`<h3>Not Answered: ${game.noAnswer}</h3>`);
+        $('#game-section').append("<button id='reset'>RESET</button>");
     },
     clicked: function(e) {
         clearInterval(timer);
@@ -161,6 +162,12 @@ let game = {
 
     },
     reset: function() {
+        game.currentQuestion = 0;
+        game.counter = 0;
+        game.correct = 0;
+        game.wrong = 0;
+        game.noAnswer = 0;
+        game.loadQuestion();
 
     }
 }
