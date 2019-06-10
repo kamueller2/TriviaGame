@@ -67,8 +67,9 @@ let game = {
     noAnswer: 0,
     countdown: function() {
         game.counter--;
-
-        $('#counter').html(game.counter);
+        let counterDiv = $("<div>");
+        counterDiv.html(`TIME LEFT: ${game.counter}`);
+        $('#counterTime').html(counterDiv);
 
         if (game.counter <= 0) {
             console.log("Time's Up!");
@@ -87,7 +88,7 @@ let game = {
         for (let i = 0; i < questions[game.currentQuestion].choices.length; i++) {
 
             // STORING ANSWER IN CHOICES[I]
-            $('#game-section').append('<button class="answer-button" id="button-' + i + '" data-name="' + questions[game.currentQuestion].choices[i] + '">' + questions[game.currentQuestion].choices[i] + '</button>');
+            $('#game-section').append('<button class="answer-button btn-block w-25 border-white rounded" id="button-' + i + '" data-name="' + questions[game.currentQuestion].choices[i] + '">' + questions[game.currentQuestion].choices[i] + '</button>');
 
         }
     },
