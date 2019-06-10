@@ -19,6 +19,7 @@ body {
 .btn-outline,
 .answer-button {
     color: #ebced0;
+    margin-top: 20px;
 }
 
 .answer-button {
