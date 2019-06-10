@@ -3,6 +3,7 @@ $('#start').on('click', function() {
     game.loadQuestion();
 })
 
+// CONFIRMS IF SELECTION WAS RIGHT OR WRONG
 $(document).on('click', '.answer-button', function(e) {
     game.clicked(e);
 })
@@ -85,10 +86,6 @@ let game = {
             // STORING ANSWER IN CHOICES[I]
             $('#game-section').append('<button class="answer-button" id="button-' + i + '" data-name="' + questions[game.currentQuestion].choices[i] + '">' + questions[game.currentQuestion].choices[i] + '</button>');
 
-
-
-            // $('.'#game-section'').append(`<button class=answer-button id=button- ${i}  data-name ${questions[game.currentQuestion].choices[i]} > ${questions[game.currentQuestion].choices[i]}  </button>`);
-
         }
 
         // LOOP THROUGH QUESTIONS W/ ANSWER CHOICES
@@ -112,9 +109,9 @@ let game = {
         }
 
     },
-    results: function() {
+    scoreboard: function() {
         clearInterval(timer);
-        $('#game-section').html('<h2>All Done!</h2>');
+        $('#game-section').html('<h2>SCOREBOARD</h2>');
         $('#game-section').append(`<h3>Correct:  ${game.correct}<h/3>`);
         $('#game-section').append(`<h3>Wrong: ${game.wrong}</h3>`);
         $('#game-section').append(`<h3>Not Answered: ${game.noAnswer}</h3>`);
@@ -122,7 +119,8 @@ let game = {
     clicked: function(e) {
         clearInterval(timer);
 
-        if ($(e.target).data("name") === questions[game.currentQuestion].answer) {
+        // PASSING IN USER SELECTION RIGHT OR WRONG
+        if ($(e.target).data("name") == questions[game.currentQuestion].answer) {
             game.answeredCorrect();
         } else {
             game.answeredWrong();
@@ -131,11 +129,17 @@ let game = {
     },
     answeredCorrect: function() {
         console.log("you got it!");
+
+        // CLEAR TIMER AFTER SELECTION CORRECT & ADD TO CORRECT COUNTER
         clearInterval(timer);
         game.correct++
             $('#game-section').html('<h3>You got it right!</h3>');
+
+        // IF LAST QUESTION GO TO SCOREBOARD
         if (game.currentQuestion == questions.length - 1) {
-            setTimeout(game.results, 3000);
+            setTimeout(game.scoreboard, 3000);
+
+            // OTHERWISE GO TO NEXT QUESTION
         } else {
             setTimeout(game.nextQuestion, 3000);
         }
@@ -147,7 +151,9 @@ let game = {
         $('#game-section').html('<h3>You got it wrong!</h3>');
         $('#game-section').append(`<h3>The correct answer is: ${questions[game.currentQuestion].answer}</h3>`);
         if (game.currentQuestion == questions.length - 1) {
-
+            setTimeout(game.scoreboard, 3000);
+        } else {
+            setTimeout(game.nextQuestion, 3000);
         }
 
 
