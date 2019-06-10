@@ -16,6 +16,12 @@ body {
     color: #afafaf;
 }
 
-.btn-outline {
+.btn-outline,
+.answer-button {
     color: #ebced0;
+}
+
+.answer-button {
+    background-color: #ffffff;
+    color: #afafaf;
 }
