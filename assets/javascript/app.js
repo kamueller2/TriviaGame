@@ -75,6 +75,9 @@ let game = {
             game.timeUp();
         }
     },
+
+    // LOOP THROUGH QUESTIONS W/ ANSWER CHOICES
+
     loadQuestion: function() {
         timer = setInterval(game.countdown, 1000);
 
@@ -87,10 +90,9 @@ let game = {
             $('#game-section').append('<button class="answer-button" id="button-' + i + '" data-name="' + questions[game.currentQuestion].choices[i] + '">' + questions[game.currentQuestion].choices[i] + '</button>');
 
         }
-
-        // LOOP THROUGH QUESTIONS W/ ANSWER CHOICES
     },
-    nextQuestion: function() {
+    // RESET COUNTER & LOAD NEW QUESTION
+    next: function() {
         game.counter = 15;
         $('#counter').html(game.counter);
         game.currentQuestion++;
@@ -100,12 +102,12 @@ let game = {
     timeUp: function() {
         clearInterval(timer);
         game.noAnswer++;
-        $('#game-section').html('<h2>Time/s Up!</h2>');
+        $('#game-section').html("<h2>Time's Up!</h2>");
         $('#game-section').append(`<h3>Correct Answer:  ${questions[game.currentQuestion].answer}</h3>`);
         if (game.currentQuestion == questions.length - 1) {
-            setTimeout(game.results, 3000);
+            setTimeout(game.scoreboard, 3000);
         } else {
-            setTimeout(game.nextQuestion, 3000);
+            setTimeout(game.next, 3000);
         }
 
     },
@@ -141,21 +143,20 @@ let game = {
 
             // OTHERWISE GO TO NEXT QUESTION
         } else {
-            setTimeout(game.nextQuestion, 3000);
+            setTimeout(game.next, 3000);
         }
     },
     answeredWrong: function() {
         console.log("wrong");
         clearInterval(timer);
         game.wrong++;
-        $('#game-section').html('<h3>You got it wrong!</h3>');
+        $('#game-section').html('<h3>Not quite...</h3>');
         $('#game-section').append(`<h3>The correct answer is: ${questions[game.currentQuestion].answer}</h3>`);
         if (game.currentQuestion == questions.length - 1) {
             setTimeout(game.scoreboard, 3000);
         } else {
-            setTimeout(game.nextQuestion, 3000);
+            setTimeout(game.next, 3000);
         }
-
 
     },
     reset: function() {
