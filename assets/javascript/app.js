@@ -1,3 +1,7 @@
+// $(document).ready(function() {
+
+
+
 $('#start').on('click', function() {
     $('#start').remove();
     game.loadQuestion();
@@ -8,7 +12,9 @@ $(document).on('click', '.answer-button', function(e) {
     game.clicked(e);
 })
 
-
+$(document).on('click', '#reset', function() {
+    game.reset();
+});
 
 
 
@@ -61,15 +67,16 @@ let questions = [{
 let game = {
     questions: questions,
     currentQuestion: 0,
-    counter: 15,
+    counter: 16,
     correct: 0,
     wrong: 0,
     noAnswer: 0,
     countdown: function() {
         game.counter--;
-        let counterDiv = $("<div>");
-        counterDiv.html(`TIME LEFT: ${game.counter}`);
-        $('#counterTime').html(counterDiv);
+        let counterClock = $("<h2>");
+        counterClock.html(`TIME LEFT: ${game.counter}`);
+        $('#counterTime').html(counterClock);
+        // game.counter--;
 
         if (game.counter <= 0) {
             console.log("Time's Up!");
@@ -81,6 +88,8 @@ let game = {
 
     loadQuestion: function() {
         timer = setInterval(game.countdown, 1000);
+
+        // $('#game-section').html("<h2 id=#counterTime>15</h2>");
 
         // POST QUESTION TO PAGE
         $('#game-section').html(`<h2> ${questions[game.currentQuestion].question}</h2>`);
@@ -94,8 +103,8 @@ let game = {
     },
     // RESET COUNTER & LOAD NEW QUESTION
     next: function() {
-        game.counter = 15;
-        $('#counter').html(game.counter);
+        game.counter = 16;
+        $('#counterTime').html(game.countdown);
         game.currentQuestion++;
         game.loadQuestion();
 
@@ -103,21 +112,23 @@ let game = {
     timeUp: function() {
         clearInterval(timer);
         game.noAnswer++;
-        $('#game-section').html("<h2>Time's Up!</h2>");
+        $('#counterTime').html("<h2>Time's Up!</h2>");
         $('#game-section').append(`<h3>Correct Answer:  ${questions[game.currentQuestion].answer}</h3>`);
         if (game.currentQuestion == questions.length - 1) {
-            setTimeout(game.scoreboard, 3000);
+            setTimeout(game.scoreboard, 1000);
         } else {
-            setTimeout(game.next, 3000);
+            setTimeout(game.next, 2000);
         }
 
     },
     scoreboard: function() {
         clearInterval(timer);
         $('#game-section').html('<h2>SCOREBOARD</h2>');
+        // $('#counterTime').remove();
         $('#game-section').append(`<h3>Correct:  ${game.correct}<h/3>`);
         $('#game-section').append(`<h3>Wrong: ${game.wrong}</h3>`);
         $('#game-section').append(`<h3>Not Answered: ${game.noAnswer}</h3>`);
+        $('#game-section').append("<button id='reset'>RESET</button>");
     },
     clicked: function(e) {
         clearInterval(timer);
@@ -161,6 +172,14 @@ let game = {
 
     },
     reset: function() {
+        game.currentQuestion = 0;
+        game.counter = 16;
+        game.correct = 0;
+        game.wrong = 0;
+        game.noAnswer = 0;
+        game.loadQuestion();
 
     }
 }
+
+// });

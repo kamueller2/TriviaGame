@@ -21,8 +21,19 @@ body {
     color: #ebced0;
 }
 
-.answer-button {
+.answer-button,
+#reset {
     background-color: #ffffff;
     color: #afafaf;
     margin: 0 auto;
+    padding-top: 15px;
 }
+
+#counterTime {
+    color: #afafaf;
+}
+
+
+/* h2 {
+    padding-bottom: 30px;
+} */
